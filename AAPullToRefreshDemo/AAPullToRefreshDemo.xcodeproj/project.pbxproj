@@ -17,7 +17,6 @@
 		0A80CD1A1854A58600A8852E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A80CD191854A58600A8852E /* main.m */; };
 		0A80CD1E1854A58600A8852E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A80CD1D1854A58600A8852E /* AppDelegate.m */; };
 		0A80CD211854A58600A8852E /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A80CD1F1854A58600A8852E /* Main_iPhone.storyboard */; };
-		0A80CD241854A58600A8852E /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A80CD221854A58600A8852E /* Main_iPad.storyboard */; };
 		0A80CD271854A58600A8852E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A80CD261854A58600A8852E /* ViewController.m */; };
 		0A80CD291854A58600A8852E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A80CD281854A58600A8852E /* Images.xcassets */; };
 		0A80CD301854A58600A8852E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A80CD2F1854A58600A8852E /* XCTest.framework */; };
@@ -53,7 +52,6 @@
 		0A80CD1C1854A58600A8852E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0A80CD1D1854A58600A8852E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0A80CD201854A58600A8852E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		0A80CD231854A58600A8852E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		0A80CD251854A58600A8852E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		0A80CD261854A58600A8852E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0A80CD281854A58600A8852E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 				0A80CD1C1854A58600A8852E /* AppDelegate.h */,
 				0A80CD1D1854A58600A8852E /* AppDelegate.m */,
 				0A80CD1F1854A58600A8852E /* Main_iPhone.storyboard */,
-				0A80CD221854A58600A8852E /* Main_iPad.storyboard */,
 				0A80CD251854A58600A8852E /* ViewController.h */,
 				0A80CD261854A58600A8852E /* ViewController.m */,
 				0A80CD281854A58600A8852E /* Images.xcassets */,
@@ -251,7 +248,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A80CD241854A58600A8852E /* Main_iPad.storyboard in Resources */,
 				0A1458B81854B9390042FF82 /* launchpad@2x.png in Resources */,
 				0A80CD291854A58600A8852E /* Images.xcassets in Resources */,
 				0A80CD211854A58600A8852E /* Main_iPhone.storyboard in Resources */,
@@ -315,14 +311,6 @@
 				0A80CD201854A58600A8852E /* Base */,
 			);
 			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		0A80CD221854A58600A8852E /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0A80CD231854A58600A8852E /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		0A80CD381854A58600A8852E /* InfoPlist.strings */ = {
@@ -418,7 +406,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AAPullToRefreshDemo/AAPullToRefreshDemo-Prefix.pch";
 				INFOPLIST_FILE = "AAPullToRefreshDemo/AAPullToRefreshDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -431,7 +421,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AAPullToRefreshDemo/AAPullToRefreshDemo-Prefix.pch";
 				INFOPLIST_FILE = "AAPullToRefreshDemo/AAPullToRefreshDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

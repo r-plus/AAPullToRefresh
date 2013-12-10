@@ -10,27 +10,33 @@
 #import "AAPullToRefresh.h"
 
 @interface ViewController ()
-@property (weak, nonatomic) IBOutlet UIScrollView *iPadScrollView;
-@property (weak, nonatomic) IBOutlet UIScrollView *iPhoneScrollView;
-
+@property (nonatomic, strong) UIView *thresholdView;
+@property (nonatomic, strong) UIScrollView *scrollView;
 @end
 
 @implementation ViewController
 
-static inline BOOL IsPad()
-{
-    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIScrollView *scrollView = IsPad() ? self.iPadScrollView : self.iPhoneScrollView;
-    scrollView.contentSize = CGSizeMake(scrollView.bounds.size.width, scrollView.bounds.size.height * 1.2f);
-    scrollView.contentInset = UIEdgeInsetsMake(64,0,0,0);
+    self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    self.scrollView.contentSize = self.view.bounds.size;
+    self.scrollView.alwaysBounceHorizontal = YES;
+    self.scrollView.alwaysBounceVertical = YES;
+    self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.scrollView.backgroundColor = UIColor.lightGrayColor;
+    [self.view addSubview:self.scrollView];
+    
+    CGRect rect = self.scrollView.bounds;
+    rect.size.height = self.scrollView.contentSize.height;
+    self.thresholdView = [[UIView alloc] initWithFrame:rect];
+    self.thresholdView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.thresholdView.userInteractionEnabled = NO;
+    self.thresholdView.backgroundColor = UIColor.whiteColor;
+    [self.scrollView addSubview:self.thresholdView];
     
     // top
-    AAPullToRefresh *tv = [scrollView addPullToRefreshPosition:AAPullToRefreshPositionTop ActionHandler:^(AAPullToRefresh *v){
+    AAPullToRefresh *tv = [self.scrollView addPullToRefreshPosition:AAPullToRefreshPositionTop ActionHandler:^(AAPullToRefresh *v){
         NSLog(@"fire from top");
         [v performSelector:@selector(stopIndicatorAnimation) withObject:nil afterDelay:1.0f];
     }];
@@ -38,7 +44,7 @@ static inline BOOL IsPad()
     tv.borderColor = [UIColor whiteColor];
     
     // bottom
-    AAPullToRefresh *bv = [scrollView addPullToRefreshPosition:AAPullToRefreshPositionBottom ActionHandler:^(AAPullToRefresh *v){
+    AAPullToRefresh *bv = [self.scrollView addPullToRefreshPosition:AAPullToRefreshPositionBottom ActionHandler:^(AAPullToRefresh *v){
         NSLog(@"fire from bottom");
         [v performSelector:@selector(stopIndicatorAnimation) withObject:nil afterDelay:1.0f];
     }];
@@ -46,13 +52,13 @@ static inline BOOL IsPad()
     bv.borderColor = [UIColor whiteColor];
     
     // left
-    [scrollView addPullToRefreshPosition:AAPullToRefreshPositionLeft ActionHandler:^(AAPullToRefresh *v){
+    [self.scrollView addPullToRefreshPosition:AAPullToRefreshPositionLeft ActionHandler:^(AAPullToRefresh *v){
         NSLog(@"fire from left");
         [v performSelector:@selector(stopIndicatorAnimation) withObject:nil afterDelay:1.0f];
     }];
     
     // right
-    [scrollView addPullToRefreshPosition:AAPullToRefreshPositionRight ActionHandler:^(AAPullToRefresh *v){
+    [self.scrollView addPullToRefreshPosition:AAPullToRefreshPositionRight ActionHandler:^(AAPullToRefresh *v){
         NSLog(@"fire from right");
         [v performSelector:@selector(stopIndicatorAnimation) withObject:nil afterDelay:1.0f];
     }];
@@ -62,6 +68,13 @@ static inline BOOL IsPad()
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillLayoutSubviews
+{
+    CGRect rect = self.scrollView.bounds;
+    rect.size.height = self.scrollView.contentSize.height;
+    self.thresholdView.frame = rect;
 }
 
 @end
