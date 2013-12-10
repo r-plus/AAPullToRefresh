@@ -11,7 +11,7 @@ All around pull to refresh library.
 
 ## Install
 ### CocoaPods
-not yet registered.
+Add `pod 'AAPullToRefresh'` to your Podfile.
 
 ### Manually
 
