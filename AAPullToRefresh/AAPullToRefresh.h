@@ -31,7 +31,7 @@ typedef NS_ENUM(NSUInteger, AAPullToRefreshPosition) {
 - (id)initWithImage:(UIImage *)image position:(AAPullToRefreshPosition)position;
 - (void)stopIndicatorAnimation;
 - (void)manuallyTriggered;
-- (void)setSize:(CGSize) size;
+- (void)setSize:(CGSize)size;
 
 @end
 
