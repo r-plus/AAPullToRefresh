@@ -342,11 +342,13 @@
             centerX = xOffset / 2.0f;
             centerY = self.scrollView.bounds.size.height / 2.0f + yOffset;
             break;
-        case AAPullToRefreshPositionRight:
-            self.progress = xOffset / self.threshold;
-            centerX = self.scrollView.bounds.size.width + xOffset / 2.0f;
+        case AAPullToRefreshPositionRight: {
+            CGFloat rightEdgeOffset = self.scrollView.contentSize.width - self.scrollView.bounds.size.width;
+            centerX = self.scrollView.contentSize.width + MAX((xOffset - rightEdgeOffset) / 2.0f, 0);
             centerY = self.scrollView.bounds.size.height / 2.0f + yOffset;
+            self.progress = MAX((xOffset - rightEdgeOffset) / self.threshold, 0);
             break;
+        }
         default:
             break;
     }
@@ -354,7 +356,7 @@
     self.center = CGPointMake(centerX, centerY);
     switch (self.state) {
         case AAPullToRefreshStateNormal: //detect action
-            if (!self.scrollView.dragging && self.prevProgress > 0.99f) {
+            if (!self.scrollView.dragging && !self.scrollView.isZooming && self.prevProgress > 0.99f) {
                 [self actionTriggeredState];
             }
             break;

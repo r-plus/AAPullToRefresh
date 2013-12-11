@@ -20,6 +20,8 @@
 {
     [super viewDidLoad];
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    self.scrollView.delegate = self;
+    self.scrollView.maximumZoomScale = 2.0f;
     self.scrollView.contentSize = self.view.bounds.size;
     self.scrollView.alwaysBounceHorizontal = YES;
     self.scrollView.alwaysBounceVertical = YES;
@@ -75,6 +77,11 @@
     CGRect rect = self.scrollView.bounds;
     rect.size.height = self.scrollView.contentSize.height;
     self.thresholdView.frame = rect;
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.thresholdView;
 }
 
 @end
