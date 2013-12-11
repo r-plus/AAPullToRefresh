@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name          = "AAPullToRefresh"
-  s.version       = "1.0.1"
+  s.version       = "1.0.2"
   s.summary       = "All around pull to refresh library."
   s.homepage      = "https://github.com/r-plus/AAPullToRefresh/"
   s.license       = 'MIT'
