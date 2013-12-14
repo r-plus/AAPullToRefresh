@@ -21,7 +21,7 @@ Add `pod 'AAPullToRefresh'` to your Podfile.
 
     #import "AAPullToRefresh.h"
     ...
-    AAPullToRefresh *tv = [self.scrollView addPullToRefreshPosition:AAPullToRefreshPositionTop ActionHandler:^(AAPullToRefresh *v){
+    AAPullToRefresh *tv = [self.scrollView addPullToRefreshPosition:AAPullToRefreshPositionTop actionHandler:^(AAPullToRefresh *v){
         // do something...
         // then must call stopIndicatorAnimation method.
         [v performSelector:@selector(stopIndicatorAnimation) withObject:nil afterDelay:1.0f];

@@ -38,7 +38,7 @@
     [self.scrollView addSubview:self.thresholdView];
     
     // top
-    AAPullToRefresh *tv = [self.scrollView addPullToRefreshPosition:AAPullToRefreshPositionTop ActionHandler:^(AAPullToRefresh *v){
+    AAPullToRefresh *tv = [self.scrollView addPullToRefreshPosition:AAPullToRefreshPositionTop actionHandler:^(AAPullToRefresh *v){
         NSLog(@"fire from top");
         [v performSelector:@selector(stopIndicatorAnimation) withObject:nil afterDelay:1.0f];
     }];
@@ -46,7 +46,7 @@
     tv.borderColor = [UIColor whiteColor];
     
     // bottom
-    AAPullToRefresh *bv = [self.scrollView addPullToRefreshPosition:AAPullToRefreshPositionBottom ActionHandler:^(AAPullToRefresh *v){
+    AAPullToRefresh *bv = [self.scrollView addPullToRefreshPosition:AAPullToRefreshPositionBottom actionHandler:^(AAPullToRefresh *v){
         NSLog(@"fire from bottom");
         [v performSelector:@selector(stopIndicatorAnimation) withObject:nil afterDelay:1.0f];
     }];
@@ -54,13 +54,13 @@
     bv.borderColor = [UIColor whiteColor];
     
     // left
-    [self.scrollView addPullToRefreshPosition:AAPullToRefreshPositionLeft ActionHandler:^(AAPullToRefresh *v){
+    [self.scrollView addPullToRefreshPosition:AAPullToRefreshPositionLeft actionHandler:^(AAPullToRefresh *v){
         NSLog(@"fire from left");
         [v performSelector:@selector(stopIndicatorAnimation) withObject:nil afterDelay:1.0f];
     }];
     
     // right
-    [self.scrollView addPullToRefreshPosition:AAPullToRefreshPositionRight ActionHandler:^(AAPullToRefresh *v){
+    [self.scrollView addPullToRefreshPosition:AAPullToRefreshPositionRight actionHandler:^(AAPullToRefresh *v){
         NSLog(@"fire from right");
         [v performSelector:@selector(stopIndicatorAnimation) withObject:nil afterDelay:1.0f];
     }];

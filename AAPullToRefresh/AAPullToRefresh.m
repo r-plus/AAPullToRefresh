@@ -5,7 +5,7 @@
 
 @implementation UIScrollView (AAPullToRefresh)
 
-- (AAPullToRefresh *)addPullToRefreshPosition:(AAPullToRefreshPosition)position ActionHandler:(void (^)(AAPullToRefresh *v))handler
+- (AAPullToRefresh *)addPullToRefreshPosition:(AAPullToRefreshPosition)position actionHandler:(void (^)(AAPullToRefresh *v))handler
 {
     AAPullToRefresh *view = [[AAPullToRefresh alloc] initWithImage:[UIImage imageNamed:@"centerIcon"]
                                                           position:position];
