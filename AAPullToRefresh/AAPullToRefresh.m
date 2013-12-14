@@ -1,7 +1,12 @@
 #import "AAPullToRefresh.h"
+#import <objc/runtime.h>
 
 #define DEGREES_TO_RADIANS(x) (x)/180.0*M_PI
 #define RADIANS_TO_DEGREES(x) (x)/M_PI*180.0
+
+@interface NavigationBar : UIView
++ (float)defaultHeight;
+@end
 
 @implementation UIScrollView (AAPullToRefresh)
 
@@ -327,7 +332,7 @@
         case AAPullToRefreshPositionTop:
             self.progress = ((yOffset + self.originalInsetTop) / -self.threshold);
             centerX = self.scrollView.center.x + xOffset;
-            centerY = (yOffset + self.originalInsetTop) / 2.0f;
+            centerY = (yOffset + self.originalInsetTop) / 2.0f + [objc_getClass("NavigationBar") defaultHeight];
             break;
         case AAPullToRefreshPositionBottom:
             self.progress = overBottomOffsetY / self.threshold;
