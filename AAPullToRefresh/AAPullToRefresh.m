@@ -332,7 +332,7 @@
         case AAPullToRefreshPositionTop:
             self.progress = ((yOffset + self.originalInsetTop) / -self.threshold);
             centerX = self.scrollView.center.x + xOffset;
-            centerY = (yOffset + self.originalInsetTop) / 2.0f + [objc_getClass("NavigationBar") defaultHeight];
+            centerY = (yOffset + self.originalInsetTop) / 2.0f + ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 0 : [objc_getClass("NavigationBar") defaultHeight]);
             break;
         case AAPullToRefreshPositionBottom:
             self.progress = overBottomOffsetY / self.threshold;
