@@ -5,14 +5,14 @@
 #define RADIANS_TO_DEGREES(x) (x)/M_PI*180.0
 
 @interface NavigationBar : UIView
-+ (float)defaultHeight;
++ (CGFloat)defaultHeight;
 @end
 
 @implementation UIScrollView (AAPullToRefresh)
 
 - (AAPullToRefresh *)addPullToRefreshPosition:(AAPullToRefreshPosition)position actionHandler:(void (^)(AAPullToRefresh *v))handler
 {
-    AAPullToRefresh *view = [[AAPullToRefresh alloc] initWithImage:[UIImage imageNamed:@"centerIcon"]
+    AAPullToRefresh *view = [[AAPullToRefresh alloc] initWithImage:[UIImage imageNamed:@"SLPullTo"]
                                                           position:position];
     switch (view.position) {
         case AAPullToRefreshPositionTop:
@@ -121,7 +121,7 @@
 
 - (void)_commonInit
 {
-    self.borderColor = [UIColor colorWithRed:203/255.0 green:32/255.0 blue:39/255.0 alpha:1];
+    self.borderColor = [UIColor blueColor];
     self.borderWidth = 2.0f;
     self.threshold = 60.0f;
     self.contentMode = UIViewContentModeRedraw;
