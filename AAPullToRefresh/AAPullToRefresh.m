@@ -89,6 +89,7 @@
 /*-----------------------------------------------------------------*/
 @interface AAPullToRefresh()
 
+@property (nonatomic, assign) BOOL isUserAction;
 @property (nonatomic, assign) BOOL isObserving;
 @property (nonatomic, assign) AAPullToRefreshState state;
 @property (nonatomic, assign, readonly) BOOL isSidePosition;
@@ -119,6 +120,7 @@
     self.borderColor = [UIColor colorWithRed:203/255.0 green:32/255.0 blue:39/255.0 alpha:1];
     self.borderWidth = 2.0f;
     self.threshold = 60.0f;
+    self.isUserAction = NO;
     self.contentMode = UIViewContentModeRedraw;
     self.state = AAPullToRefreshStateNormal;
     if (self.isSidePosition)
@@ -356,7 +358,7 @@
     self.center = CGPointMake(centerX, centerY);
     switch (self.state) {
         case AAPullToRefreshStateNormal: //detect action
-            if (!self.scrollView.dragging && !self.scrollView.isZooming && self.prevProgress > 0.99f) {
+            if (self.isUserAction && !self.scrollView.dragging && !self.scrollView.isZooming && self.prevProgress > 0.99f) {
                 [self actionTriggeredState];
             }
             break;
@@ -367,6 +369,7 @@
             break;
     }
     
+    self.isUserAction = (self.scrollView.dragging) ? YES : NO;
 }
 
 - (void)actionTriggeredState
