@@ -72,7 +72,8 @@
     CGContextFillEllipseInRect(ctx,CGRectInset(self.bounds, self.outlineWidth, self.outlineWidth));
     
     //Draw circle outline
-    CGContextSetStrokeColorWithColor(ctx, [UIColor colorWithWhite:0.4 alpha:0.9].CGColor);
+/*    CGContextSetStrokeColorWithColor(ctx, [UIColor colorWithWhite:0.4 alpha:0.9].CGColor);*/
+    CGContextSetStrokeColorWithColor(ctx, [UIColor blueColor].CGColor);
     CGContextSetLineWidth(ctx, self.outlineWidth);
     CGContextStrokeEllipseInRect(ctx, CGRectInset(self.bounds, self.outlineWidth, self.outlineWidth));
 }
@@ -123,7 +124,7 @@
 - (void)_commonInit
 {
     self.borderColor = [UIColor blueColor];
-    self.borderWidth = 2.0;
+    self.borderWidth = 1.0;
     self.threshold = 60.0;
     self.isUserAction = NO;
     self.contentMode = UIViewContentModeRedraw;
@@ -151,7 +152,7 @@
     //init icon layer
     CALayer *imageLayer = [CALayer layer];
     imageLayer.contentsScale = [UIScreen mainScreen].scale;
-    imageLayer.frame = CGRectInset(self.bounds, self.borderWidth, self.borderWidth);
+    imageLayer.frame = CGRectInset(self.bounds, self.borderWidth * 3.0, self.borderWidth * 3.0);
     imageLayer.contents = (id)self.imageIcon.CGImage;
     [self.layer addSublayer:imageLayer];
     self.imageLayer = imageLayer;
@@ -166,8 +167,8 @@
     shapeLayer.shadowOpacity = 0.7;
     shapeLayer.shadowRadius = 20.0;
     shapeLayer.contentsScale = [UIScreen mainScreen].scale;
-    shapeLayer.lineWidth = self.borderWidth;
-    shapeLayer.lineCap = kCALineCapRound;
+    shapeLayer.lineWidth = self.borderWidth * 2.0;
+    shapeLayer.lineCap = kCALineCapButt;
     
     [self.layer addSublayer:shapeLayer];
     self.shapeLayer = shapeLayer;
@@ -183,7 +184,7 @@
 - (void)updatePath {
     CGPoint center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     
-    UIBezierPath *bezierPath = [UIBezierPath bezierPathWithArcCenter:center radius:(self.bounds.size.width/2.0 - self.borderWidth)  startAngle:DEGREES_TO_RADIANS(-90) endAngle:DEGREES_TO_RADIANS(360-90) clockwise:YES];
+    UIBezierPath *bezierPath = [UIBezierPath bezierPathWithArcCenter:center radius:(self.bounds.size.width/2.0 - self.borderWidth)-1.0  startAngle:DEGREES_TO_RADIANS(-90) endAngle:DEGREES_TO_RADIANS(360-90) clockwise:YES];
     
     self.shapeLayer.path = bezierPath.CGPath;
 }
@@ -434,8 +435,9 @@
 
 - (void)setSize:(CGSize) size
 {
+    CGFloat space = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 0.0 : 1.0;
     CGRect rect = CGRectMake((self.scrollView.bounds.size.width - size.width)/2.0,
-                             -size.height, size.width, size.height);
+                             -size.height, size.width + space, size.height + space);
     
     self.frame = rect;
     self.shapeLayer.frame = self.bounds;
