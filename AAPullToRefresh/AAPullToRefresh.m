@@ -363,8 +363,18 @@
             }
             break;
         case AAPullToRefreshStateStopped: // finish
-        case AAPullToRefreshStateLoading: // wait until stopIndicatorAnimation
             break;
+        case AAPullToRefreshStateLoading:
+        {
+            if (self.position == AAPullToRefreshPositionTop) {
+                CGFloat height = self.bounds.size.height + 20.0f;
+                CGFloat insetAdjustment = yOffset < 0 ? fmaxf(0, height + yOffset) : height;
+                UIEdgeInsets currentInsets = self.scrollView.contentInset;
+                currentInsets.top = height - insetAdjustment;
+                self.scrollView.contentInset = currentInsets;
+            }
+            break;
+        }
         default:
             break;
     }
