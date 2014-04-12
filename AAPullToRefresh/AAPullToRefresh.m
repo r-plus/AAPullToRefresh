@@ -92,6 +92,40 @@
 
 @end
 
+@interface AAKeyboardStateListener : NSObject
+@property (nonatomic, assign, readonly, getter=isVisible) BOOL visible;
+@end
+@implementation AAKeyboardStateListener
+static AAKeyboardStateListener *sharedInstance;
++ (instancetype)sharedInstance
+{
+    return sharedInstance;
+}
++ (void)load
+{
+    @autoreleasepool {
+        sharedInstance = [[self alloc] init];
+    }
+}
+- (instancetype)init
+{
+    if ((self = [super init])) {
+        NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+        [center addObserver:self selector:@selector(didShow) name:UIKeyboardWillShowNotification object:nil];
+        [center addObserver:self selector:@selector(didHide) name:UIKeyboardWillHideNotification object:nil];
+    }
+    return self;
+}
+- (void)didShow
+{
+    _visible = YES;
+}
+- (void)didHide
+{
+    _visible = NO;
+}
+@end
+
 /*-----------------------------------------------------------------*/
 @interface AAPullToRefresh()
 
@@ -364,7 +398,7 @@
     self.center = CGPointMake(centerX, centerY);
     switch (self.state) {
         case AAPullToRefreshStateNormal: //detect action
-            if (self.isUserAction && !self.scrollView.dragging && !self.scrollView.isZooming && self.prevProgress > 0.99) {
+            if (self.isUserAction && ![AAKeyboardStateListener sharedInstance].isVisible && !self.scrollView.dragging && !self.scrollView.isZooming && self.prevProgress > 0.99) {
                 [self actionTriggeredState];
             }
             break;
