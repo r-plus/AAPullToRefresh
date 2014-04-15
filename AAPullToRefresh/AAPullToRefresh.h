@@ -37,4 +37,5 @@ typedef NS_ENUM(NSUInteger, AAPullToRefreshPosition) {
 
 @interface UIScrollView (AAPullToRefresh)
 - (AAPullToRefresh *)addPullToRefreshPosition:(AAPullToRefreshPosition)position actionHandler:(void (^)(AAPullToRefresh *v))handler;
+- (AAPullToRefresh *)addPullToRefreshPosition:(AAPullToRefreshPosition)position image:(UIImage *)image actionHandler:(void (^)(AAPullToRefresh *v))handler;
 @end
