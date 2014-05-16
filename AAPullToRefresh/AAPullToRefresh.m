@@ -247,8 +247,11 @@ static AAKeyboardStateListener *sharedInstance;
 - (void)resetScrollViewContentInset:(actionHandler)handler
 {
     UIEdgeInsets currentInsets = self.scrollView.contentInset;
-    currentInsets.top = self.originalInsetTop;
-    currentInsets.bottom = self.originalInsetBottom;
+    if (self.position == AAPullToRefreshPositionTop) {
+        currentInsets.top = self.originalInsetTop;
+    } else {
+        currentInsets.bottom = self.originalInsetBottom;
+    }
     [self setScrollViewContentInset:currentInsets handler:handler];
 }
 
