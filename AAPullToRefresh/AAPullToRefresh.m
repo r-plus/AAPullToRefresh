@@ -480,4 +480,9 @@
     _shapeLayer.strokeColor = _borderColor.CGColor;
 }
 
+-(void)dealloc
+{
+    [self.scrollView removeObserver:self forKeyPath:@"contentOffset"];
+}
+
 @end
