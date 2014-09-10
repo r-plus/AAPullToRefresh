@@ -93,7 +93,6 @@
 @property (nonatomic, assign) BOOL isObserving;
 @property (nonatomic, assign) AAPullToRefreshState state;
 @property (nonatomic, assign, readonly) BOOL isSidePosition;
-@property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;  //Loading Indicator
 @property (nonatomic, strong) AAPullToRefreshBackgroundLayer *backgroundLayer;
 @property (nonatomic, strong) CAShapeLayer *shapeLayer;
 @property (nonatomic, strong) CALayer *imageLayer;
@@ -465,6 +464,17 @@
 {
     _borderColor = borderColor;
     _shapeLayer.strokeColor = _borderColor.CGColor;
+}
+
+- (void)setActivityIndicatorView:(UIActivityIndicatorView *)activityIndicatorView
+{
+    if(_activityIndicatorView)
+        [activityIndicatorView removeFromSuperview];
+    _activityIndicatorView = activityIndicatorView;
+    _activityIndicatorView.hidesWhenStopped = YES;
+    _activityIndicatorView.frame = self.bounds;
+    [self addSubview:_activityIndicatorView];
+    
 }
 
 @end
