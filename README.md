@@ -7,7 +7,7 @@ All around pull to refresh library.
 
 ## Requirement
 - ARC.
-- iOS 6 or higher(tested on iOS 6 and 7).
+- iOS 6 or higher(tested on iOS 6, 7 and 8).
 
 ## Install
 ### CocoaPods
