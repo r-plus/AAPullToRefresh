@@ -10,6 +10,7 @@
 		0A1458AE1854ABB40042FF82 /* AAPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1458AA1854ABB40042FF82 /* AAPullToRefresh.m */; };
 		0A1458AF1854ABB40042FF82 /* centerIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1458AB1854ABB40042FF82 /* centerIcon@2x.png */; };
 		0A1458B81854B9390042FF82 /* launchpad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1458B71854B9390042FF82 /* launchpad@2x.png */; };
+		0A77844219E10C7C00B1C84B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A77844119E10C7C00B1C84B /* LaunchScreen.xib */; };
 		0A80CD0E1854A58500A8852E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A80CD0D1854A58500A8852E /* Foundation.framework */; };
 		0A80CD101854A58500A8852E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A80CD0F1854A58500A8852E /* CoreGraphics.framework */; };
 		0A80CD121854A58500A8852E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A80CD111854A58500A8852E /* UIKit.framework */; };
@@ -41,6 +42,7 @@
 		0A1458AA1854ABB40042FF82 /* AAPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPullToRefresh.m; sourceTree = "<group>"; };
 		0A1458AB1854ABB40042FF82 /* centerIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "centerIcon@2x.png"; sourceTree = "<group>"; };
 		0A1458B71854B9390042FF82 /* launchpad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launchpad@2x.png"; sourceTree = "<group>"; };
+		0A77844119E10C7C00B1C84B /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		0A80CD0A1854A58500A8852E /* AAPullToRefreshDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AAPullToRefreshDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A80CD0D1854A58500A8852E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0A80CD0F1854A58500A8852E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -137,6 +139,7 @@
 				0A80CD1F1854A58600A8852E /* Main_iPhone.storyboard */,
 				0A80CD251854A58600A8852E /* ViewController.h */,
 				0A80CD261854A58600A8852E /* ViewController.m */,
+				0A77844119E10C7C00B1C84B /* LaunchScreen.xib */,
 				0A80CD281854A58600A8852E /* Images.xcassets */,
 				0A80CD141854A58600A8852E /* Supporting Files */,
 			);
@@ -216,7 +219,7 @@
 		0A80CD021854A58500A8852E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "r-plus";
 				TargetAttributes = {
 					0A80CD2D1854A58600A8852E = {
@@ -252,6 +255,7 @@
 				0A80CD291854A58600A8852E /* Images.xcassets in Resources */,
 				0A80CD211854A58600A8852E /* Main_iPhone.storyboard in Resources */,
 				0A80CD181854A58600A8852E /* InfoPlist.strings in Resources */,
+				0A77844219E10C7C00B1C84B /* LaunchScreen.xib in Resources */,
 				0A1458AF1854ABB40042FF82 /* centerIcon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,7 +332,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -368,7 +371,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -402,7 +404,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AAPullToRefreshDemo/AAPullToRefreshDemo-Prefix.pch";
 				INFOPLIST_FILE = "AAPullToRefreshDemo/AAPullToRefreshDemo-Info.plist";
@@ -417,7 +418,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AAPullToRefreshDemo/AAPullToRefreshDemo-Prefix.pch";
 				INFOPLIST_FILE = "AAPullToRefreshDemo/AAPullToRefreshDemo-Info.plist";
@@ -431,7 +431,6 @@
 		0A80CD431854A58600A8852E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AAPullToRefreshDemo.app/AAPullToRefreshDemo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -454,7 +453,6 @@
 		0A80CD441854A58600A8852E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AAPullToRefreshDemo.app/AAPullToRefreshDemo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
