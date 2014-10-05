@@ -24,6 +24,7 @@
 		0A80CD321854A58600A8852E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A80CD111854A58500A8852E /* UIKit.framework */; };
 		0A80CD3A1854A58600A8852E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A80CD381854A58600A8852E /* InfoPlist.strings */; };
 		0A80CD3C1854A58600A8852E /* AAPullToRefreshDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A80CD3B1854A58600A8852E /* AAPullToRefreshDemoTests.m */; };
+		0AC83EB219E1131C008C7752 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AC83EB119E1131C008C7752 /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		0A80CD371854A58600A8852E /* AAPullToRefreshDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AAPullToRefreshDemoTests-Info.plist"; sourceTree = "<group>"; };
 		0A80CD391854A58600A8852E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0A80CD3B1854A58600A8852E /* AAPullToRefreshDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AAPullToRefreshDemoTests.m; sourceTree = "<group>"; };
+		0AC83EB119E1131C008C7752 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				0A80CD1D1854A58600A8852E /* AppDelegate.m */,
 				0A80CD1F1854A58600A8852E /* Main_iPhone.storyboard */,
 				0A80CD251854A58600A8852E /* ViewController.h */,
+				0AC83EB119E1131C008C7752 /* LaunchScreen.xib */,
 				0A80CD261854A58600A8852E /* ViewController.m */,
 				0A80CD281854A58600A8852E /* Images.xcassets */,
 				0A80CD141854A58600A8852E /* Supporting Files */,
@@ -252,6 +255,7 @@
 				0A80CD291854A58600A8852E /* Images.xcassets in Resources */,
 				0A80CD211854A58600A8852E /* Main_iPhone.storyboard in Resources */,
 				0A80CD181854A58600A8852E /* InfoPlist.strings in Resources */,
+				0AC83EB219E1131C008C7752 /* LaunchScreen.xib in Resources */,
 				0A1458AF1854ABB40042FF82 /* centerIcon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,7 +406,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AAPullToRefreshDemo/AAPullToRefreshDemo-Prefix.pch";
 				INFOPLIST_FILE = "AAPullToRefreshDemo/AAPullToRefreshDemo-Info.plist";
@@ -417,7 +420,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AAPullToRefreshDemo/AAPullToRefreshDemo-Prefix.pch";
 				INFOPLIST_FILE = "AAPullToRefreshDemo/AAPullToRefreshDemo-Info.plist";
