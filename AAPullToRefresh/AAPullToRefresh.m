@@ -375,19 +375,32 @@ static AAKeyboardStateListener *sharedInstance;
 {
     CGFloat yOffset = contentOffset.y;
     CGFloat xOffset = contentOffset.x;
-    CGFloat overBottomOffsetY = yOffset - self.scrollView.contentSize.height + self.scrollView.frame.size.height;
+    CGFloat overBottomOffsetY;
+    if (kCFCoreFoundationVersionNumber >= 1000.0) {
+        overBottomOffsetY = yOffset - self.scrollView.contentSize.height + self.scrollView.frame.size.height - self.scrollView.contentInset.bottom;
+    } else {
+        overBottomOffsetY = yOffset - self.scrollView.contentSize.height + self.scrollView.frame.size.height;
+    }
     CGFloat centerX;
     CGFloat centerY;
     switch (self.position) {
         case AAPullToRefreshPositionTop:
             self.progress = ((yOffset + self.originalInsetTop) / -self.threshold);
             centerX = self.scrollView.center.x + xOffset;
-            centerY = (yOffset + self.originalInsetTop) / 2.0 + ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 0 : [objc_getClass("NavigationBar") defaultHeight]);
+            if (kCFCoreFoundationVersionNumber >= 1000.0) {
+                centerY = (yOffset + self.originalInsetTop) / 2.0;
+            } else {
+                centerY = (yOffset + self.originalInsetTop) / 2.0 + ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 0 : [objc_getClass("NavigationBar") defaultHeight]);
+            }
             break;
         case AAPullToRefreshPositionBottom:
             self.progress = overBottomOffsetY / self.threshold;
             centerX = self.scrollView.center.x + xOffset;
-            centerY = self.scrollView.frame.size.height + self.frame.size.height / 2.0 + yOffset;
+            if (kCFCoreFoundationVersionNumber >= 1000.0) {
+                centerY = self.scrollView.frame.size.height + self.frame.size.height / 2.0 + yOffset - self.scrollView.contentInset.bottom;
+            } else {
+                centerY = self.scrollView.frame.size.height + self.frame.size.height / 2.0 + yOffset;
+            }
             if (overBottomOffsetY >= 0.0) {
                 centerY -= overBottomOffsetY / 1.5;
             }
