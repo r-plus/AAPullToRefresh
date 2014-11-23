@@ -251,6 +251,13 @@
     }
 }
 
+- (void)willMoveToSuperview:(UIView *)newSuperview
+{
+    if (self.superview && newSuperview == nil)
+        if (self.isObserving)
+            self.showPullToRefresh = NO;
+}
+
 - (BOOL)showPullToRefresh
 {
     return !self.hidden;
