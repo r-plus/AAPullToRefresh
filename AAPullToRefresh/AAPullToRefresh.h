@@ -20,6 +20,7 @@ typedef NS_ENUM(NSUInteger, AAPullToRefreshPosition) {
 @property (nonatomic, assign, readonly) AAPullToRefreshPosition position;
 @property (nonatomic, weak) UIScrollView *scrollView;
 @property (nonatomic, copy) void (^pullToRefreshHandler)(AAPullToRefresh *v);
+@property (nonatomic, assign) BOOL isObserving;
 
 // user customizable.
 @property (nonatomic, assign) BOOL showPullToRefresh;

@@ -97,7 +97,6 @@
 @interface AAPullToRefresh()
 
 @property (nonatomic, assign) BOOL isUserAction;
-@property (nonatomic, assign) BOOL isObserving;
 @property (nonatomic, assign) AAPullToRefreshState state;
 @property (nonatomic, assign, readonly) BOOL isSidePosition;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;  //Loading Indicator
