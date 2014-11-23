@@ -47,6 +47,8 @@
 
 @property (nonatomic, assign) CGFloat outlineWidth;
 @property (nonatomic, assign, getter = isGlow) BOOL glow;
+@property (nonatomic, strong) UIColor *inactiveBorderColor;
+
 - (id)initWithBorderWidth:(CGFloat)width;
 
 @end
@@ -74,7 +76,7 @@
     CGContextFillEllipseInRect(ctx,CGRectInset(self.bounds, self.outlineWidth, self.outlineWidth));
     
     //Draw circle outline
-    CGContextSetStrokeColorWithColor(ctx, [UIColor colorWithWhite:0.4f alpha:0.9f].CGColor);
+    CGContextSetStrokeColorWithColor(ctx, self.inactiveBorderColor.CGColor);
     CGContextSetLineWidth(ctx, self.outlineWidth);
     CGContextStrokeEllipseInRect(ctx, CGRectInset(self.bounds, self.outlineWidth, self.outlineWidth));
 }
@@ -109,6 +111,16 @@
 @end
 
 @implementation AAPullToRefresh
+
+- (void)setInactiveBorderColor:(UIColor *)inactiveBorderColor
+{
+    self.backgroundLayer.inactiveBorderColor = inactiveBorderColor;
+}
+
+- (UIColor*)inactiveBorderColor
+{
+    return self.backgroundLayer.inactiveBorderColor;
+}
 
 #pragma mark - init
 - (id)initWithImage:(UIImage *)image position:(AAPullToRefreshPosition)position
@@ -145,6 +157,7 @@
     backgroundLayer.frame = self.bounds;
     [self.layer addSublayer:backgroundLayer];
     self.backgroundLayer = backgroundLayer;
+    self.inactiveBorderColor = [UIColor colorWithWhite:0.4f alpha:0.9f];
     
     if (!self.imageIcon)
         self.imageIcon = [UIImage imageNamed:@"centerIcon"];
@@ -481,6 +494,11 @@
 {
     _borderColor = borderColor;
     _shapeLayer.strokeColor = _borderColor.CGColor;
+}
+
+-(void)dealloc
+{
+    [self.scrollView removeObserver:self forKeyPath:@"contentOffset"];
 }
 
 @end

@@ -27,6 +27,7 @@ typedef NS_ENUM(NSUInteger, AAPullToRefreshPosition) {
 @property (nonatomic, assign) CGFloat threshold;
 @property (nonatomic, strong) UIImage *imageIcon;
 @property (nonatomic, strong) UIColor *borderColor;
+@property (nonatomic, strong) UIColor *inactiveBorderColor;
 @property (nonatomic, assign) CGFloat borderWidth;
 
 - (id)initWithImage:(UIImage *)image position:(AAPullToRefreshPosition)position;
