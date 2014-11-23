@@ -7,6 +7,13 @@
 
 - (AAPullToRefresh *)addPullToRefreshPosition:(AAPullToRefreshPosition)position actionHandler:(void (^)(AAPullToRefresh *v))handler
 {
+    // dont dupuricate add.
+    for (UIView *v in self.subviews) {
+        if ([v isKindOfClass:[AAPullToRefresh class]])
+            if (((AAPullToRefresh *)v).position == position)
+                return (AAPullToRefresh *)v;
+    }
+
     AAPullToRefresh *view = [[AAPullToRefresh alloc] initWithImage:[UIImage imageNamed:@"centerIcon"]
                                                           position:position];
     switch (view.position) {
