@@ -37,6 +37,7 @@
     view.originalInsetTop = self.contentInset.top;
     view.originalInsetBottom = self.contentInset.bottom;
     view.showPullToRefresh = YES;
+    view.alpha = 0.0;
     [self addSubview:view];
     
     return view;
