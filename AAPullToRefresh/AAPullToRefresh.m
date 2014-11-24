@@ -407,6 +407,9 @@ static AAKeyboardStateListener *sharedInstance;
             if (overBottomOffsetY >= 0.0) {
                 centerY -= overBottomOffsetY / 1.5;
             }
+            if (centerY < self.scrollView.bounds.size.height) {
+                centerY = self.scrollView.bounds.size.height + self.bounds.size.height;
+            }
             break;
         case AAPullToRefreshPositionLeft:
             self.progress = xOffset / -self.threshold;
