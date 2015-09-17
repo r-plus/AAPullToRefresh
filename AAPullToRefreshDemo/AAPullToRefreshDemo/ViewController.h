@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController <UIScrollViewDelegate>
+{
+    CGPoint jPreviousTouchPoint;
+    int jSwipeDirection;
+}
 
 @end

@@ -14,6 +14,24 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 @end
 
+typedef enum ScrollDirection {
+    ScrollDirectionNone,
+    ScrollDirectionRight,
+    ScrollDirectionLeft,
+    ScrollDirectionUp,
+    ScrollDirectionDown,
+    ScrollDirectionCrazy,
+} ScrollDirection;
+
+//Restricting diagonal scrolling
+typedef NS_ENUM(NSInteger, JUSTVANBLOOM_SCROLLDIRECTION) {
+    eScrollLeft = 0,
+    eScrollRight = 1,
+    eScrollTop = 2,
+    eScrollBottom = 3,
+    eScrollNone = 4
+};
+
 @implementation ViewController
 
 - (void)viewDidLoad
@@ -82,6 +100,66 @@
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
     return self.thresholdView;
+}
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGPoint offset = self.scrollView.contentOffset;
+    
+    //Cool... Restricting diagonal scrolling
+    jSwipeDirection = [self getScrollDirection:jPreviousTouchPoint endPoint:self.scrollView.contentOffset];
+    switch (jSwipeDirection) {
+        case eScrollLeft:
+            self.scrollView.contentOffset = CGPointMake(offset.x, jPreviousTouchPoint.y);
+            break;
+            
+        case eScrollRight:
+            self.scrollView.contentOffset = CGPointMake(offset.x, jPreviousTouchPoint.y);
+            break;
+            
+        case eScrollTop:
+            self.scrollView.contentOffset = CGPointMake(jPreviousTouchPoint.x, offset.y);
+            break;
+            
+        case eScrollBottom:
+            self.scrollView.contentOffset = CGPointMake(jPreviousTouchPoint.x, offset.y);
+            break;
+            
+        default:
+            break;
+    }
+}
+
+-(JUSTVANBLOOM_SCROLLDIRECTION) getScrollDirection : (CGPoint) startPoint endPoint:(CGPoint) endPoint
+{
+    JUSTVANBLOOM_SCROLLDIRECTION direction = eScrollNone;
+    
+    JUSTVANBLOOM_SCROLLDIRECTION xDirection;
+    JUSTVANBLOOM_SCROLLDIRECTION yDirection;
+    
+    int xDirectionOffset = startPoint.x - endPoint.x;
+    if(xDirectionOffset > 0)
+        xDirection = eScrollLeft;
+    else
+        xDirection = eScrollRight;
+    
+    int yDirectionOffset = startPoint.y - endPoint.y;
+    if(yDirectionOffset > 0)
+        yDirection = eScrollTop;
+    else
+        yDirection = eScrollBottom;
+    
+    if(abs(xDirectionOffset) > abs(yDirectionOffset))
+        direction = xDirection;
+    else
+        direction = yDirection;
+    
+    return direction;
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    jPreviousTouchPoint = scrollView.contentOffset;
 }
 
 @end
